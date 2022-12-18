@@ -4,7 +4,7 @@ namespace Entities
 {
     public struct Book
     {
-        public string Title { get; set; }
+        public string title;
         public string author;
         public DateTime EnteredOn;
     }
