@@ -20,6 +20,7 @@ namespace Evs.myConsoleApp
                 switch (input)
                 {
                     case "1":
+                        #region Book Create
                         Console.Clear();
                         Book book = new Book();
                         Console.WriteLine("Enter book name");
@@ -33,8 +34,10 @@ namespace Evs.myConsoleApp
                         Console.WriteLine($"Book title is {book.title}, author is {book.author} that is entered on {book.EnteredOn}");
                         Console.WriteLine($"New book id is {bookIndex}");
                         bookIndex = bookIndex + 1;
+                        #endregion
                         break;
                     case "2":
+                        #region Book List
                         Console.Clear();
                         Console.WriteLine("List of books");
                         //if (bookindex>=0)
@@ -51,11 +54,26 @@ namespace Evs.myConsoleApp
                         //    Console.WriteLine("Library is Empty");
                         //}
                         Console.ReadLine();
+                        #endregion
                         break;
                     case "3":
+                        #region Book Delete
                         Console.Clear();
-                        Console.WriteLine("Program is terminating on request");
-                        terminator = true;
+                        Console.WriteLine("Enter a book to delete");
+                        string searchString = Console.ReadLine();
+                        searchString = searchString.Trim();
+                        for (int i = 0; i < bookIndex; i++)
+                        {
+                            if (books[i].title.Equals(searchString))
+                            {
+                                Console.WriteLine($"'{books[i].title}' is deleted");
+                                books[i].title = "";
+                                books[i].author = "";
+                                books[i].EnteredOn = DateTime.Now;
+                                Console.ReadKey();
+                            }
+                        }
+                        #endregion
                         break;
                     case "4":
                         Console.Clear();
